@@ -13,11 +13,26 @@ class SwimStrokesContainer extends React.Component {
     })
   }
 
+  handleSubmit = (id, user, text) => {
+    let updatedStrokes = this.state.swimStrokes.slice() // create a copy of the []
+    let comment = {user: user, text: text}
+
+    updatedStrokes.forEach(stroke => {
+      if(user && text && stroke.id === id){
+        stroke.comments.push(comment)
+      }
+    })
+
+    this.setState({
+      swimStrokes: updatedStrokes
+    })
+  }
+
   render () {
     return (
       <div className="ui text container">
         <h1>Swimming Strokes</h1>
-        <SwimStrokesList swimStrokes={this.state.swimStrokes}/>
+        <SwimStrokesList swimStrokes={this.state.swimStrokes} handleSubmit={this.handleSubmit}/>
       </div>
     )
   }

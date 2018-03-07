@@ -6,7 +6,7 @@ const SwimStrokesList = (props) => {
     <div>
       {
         props.swimStrokes.map((stroke) => {
-          return <div key={stroke.id}><SwimStroke swimStroke={stroke} /></div>
+          return <div key={stroke.id}><SwimStroke swimStroke={stroke} handleSubmit={props.handleSubmit} /></div>
         })
       }
     </div>
